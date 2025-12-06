@@ -1,0 +1,323 @@
+---
+/**
+ * Importa estilos globales (Tailwind y reglas personalizadas).
+ * Se aplican a cualquier página que use este layout.
+ */
+ import "../styles/global.css";
+
+/**
+ * Props que recibe el layout:
+ * - title: título de la página (obligatorio)
+ * - description: descripción para la metaetiqueta (opcional)
+ */
+interface Props {
+  title: string;
+  description?: string;
+}
+
+/**
+ * Extraemos las props proporcionadas por Astro para usarlas en el HTML.
+ */
+const { title, description } = Astro.props;
+---
+
+<html
+  lang="es"
+  class="scroll-smooth"
+>
+  {/*
+    scroll-smooth:
+    - Aplica `scroll-behavior: smooth;`
+    - Hace que los enlaces con href="#seccion" se desplacen suavemente.
+  */}
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Language" content="es" />
+
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+  </head>
+
+  <body
+    class="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100"
+  >
+    {/*
+      Tailwind en <body>:
+      - min-h-screen: min-height: 100vh; el body ocupa al menos el alto completo de la ventana.
+      - bg-slate-50: fondo gris muy claro (casi blanco) en modo claro.
+      - text-slate-900: texto gris muy oscuro (casi negro) para alto contraste en modo claro.
+      - dark:bg-slate-950: en modo oscuro (`.dark` en <html>), fondo casi negro.
+      - dark:text-slate-100: en modo oscuro, texto gris muy claro (casi blanco).
+    */}
+    <div class="flex min-h-screen flex-col">
+      {/*
+        Contenedor principal:
+        - flex: convierte el contenedor en flexbox.
+        - flex-col: distribuye los hijos en columna (header, main, footer).
+        - min-h-screen: el contenedor abarca al menos el alto de la ventana para poder "empujar" el footer al fondo.
+      */}
+
+      {/* Header */}
+      <header
+        class="border-b border-slate-200 bg-white/80 backdrop-blur dark:border-slate-800 dark:bg-slate-900/80"
+      >
+        {/*
+          Header:
+          - border-b: borde inferior de 1px.
+          - border-slate-200: color de borde gris muy claro en modo claro.
+          - bg-white/80: fondo blanco con opacidad 0.8 (efecto ligeramente translúcido).
+          - backdrop-blur: desenfoca el contenido que está detrás (efecto "glassmorphism").
+          - dark:border-slate-800: en modo oscuro, borde gris muy oscuro.
+          - dark:bg-slate-900/80: en modo oscuro, fondo gris muy oscuro con opacidad 0.8.
+        */}
+        <div
+          class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6"
+        >
+          {/*
+            Contenedor interior del header:
+            - mx-auto: centra horizontalmente el contenedor (margin-left/right auto).
+            - flex: distribuye los hijos en fila (logo, nav, botón tema).
+            - max-w-5xl: ancho máximo (~64rem), evita que el contenido se estire de borde a borde en pantallas grandes.
+            - items-center: alinea verticalmente los hijos al centro.
+            - justify-between: separa los hijos a extremos opuestos con espacio entre ellos.
+            - px-4: padding horizontal de 1rem.
+            - py-3: padding vertical de 0.75rem.
+            - sm:px-6: a partir de 640px (breakpoint sm), el padding horizontal pasa a 1.5rem.
+          */}
+
+          <a href="#inicio" class="flex items-center gap-2">
+            {/*
+              Enlace de marca personal (avatar + texto):
+              - flex: disposición horizontal de avatar y texto.
+              - items-center: centra verticalmente avatar y texto.
+              - gap-2: espacio de 0.5rem entre avatar y bloque de texto.
+            */}
+            <div
+              class="h-9 w-9 overflow-hidden rounded-xl border border-slate-200 bg-slate-100 dark:border-slate-700 dark:bg-slate-800"
+            >
+              {/*
+                Contenedor del avatar:
+                - h-9 / w-9: alto y ancho fijos (~2.25rem), lo hace cuadrado.
+                - overflow-hidden: recorta cualquier parte de la imagen que salga del cuadro (para el efecto de avatar).
+                - rounded-xl: esquinas bastante redondeadas.
+                - border: borde de 1px alrededor.
+                - border-slate-200: borde gris claro en modo claro.
+                - bg-slate-100: fondo gris claro detrás de la imagen (mientras carga o si falla).
+                - dark:border-slate-700: en modo oscuro, borde gris oscuro.
+                - dark:bg-slate-800: en modo oscuro, fondo gris oscuro.
+              */}
+              <img
+                src="https://api.dicebear.com/7.x/initials/svg?seed=Jairo%20Mart%C3%ADnez&backgroundColor=073b4c&fontFamily=Helvetica&fontSize=50"
+                alt="Jairo Martínez Vanegas"
+                class="h-full w-full object-cover"
+                loading="lazy"
+              />
+              {/*
+                Imagen del avatar:
+                - h-full: altura al 100 % del contenedor.
+                - w-full: ancho al 100 % del contenedor.
+                - object-cover: escala y recorta la imagen para cubrir todo el contenedor sin deformarse.
+                - loading="lazy": carga diferida de la imagen para mejorar rendimiento.
+              */}
+            </div>
+            <div class="flex flex-col leading-tight">
+              {/*
+                Bloque de texto (nombre + descripción):
+                - flex: contenedor flexible.
+                - flex-col: apila nombre y subtítulo en columna.
+                - leading-tight: reduce la altura de línea para que el bloque se vea compacto.
+              */}
+              <span class="text-sm font-semibold">Jairo Martínez Vanegas</span>
+              {/*
+                Nombre:
+                - text-sm: tamaño de fuente pequeño (~0.875rem).
+                - font-semibold: peso de fuente 600 (negrita media).
+              */}
+              <span class="text-xs text-slate-500 dark:text-slate-400">
+                Teniente (R) · Est. Ing. Informática UTEM
+              </span>
+              {/*
+                Subtítulo / rol:
+                - text-xs: texto extra pequeño (~0.75rem).
+                - text-slate-500: gris suave para indicar información secundaria en modo claro.
+                - dark:text-slate-400: gris algo más claro en modo oscuro, mantiene legibilidad sin ser tan brillante como el texto principal.
+              */}
+            </div>
+          </a>
+
+          <nav class="hidden gap-6 text-sm font-medium sm:flex">
+            {/*
+              Navegación principal:
+              - hidden: por defecto no se muestra (móviles pequeños).
+              - sm:flex: a partir de 640px se muestra como contenedor flex horizontal.
+              - gap-6: espacio de 1.5rem entre cada enlace.
+              - text-sm: tamaño de fuente pequeño para los links.
+              - font-medium: peso de fuente 500 (ligeramente más marcado que normal).
+            */}
+            <a
+              href="#inicio"
+              class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400"
+            >
+              Inicio
+            </a>
+            <a
+              href="#sobre-mi"
+              class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400"
+            >
+              Sobre mí
+            </a>
+            <a
+              href="#habilidades"
+              class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400"
+            >
+              Habilidades
+            </a>
+            <a
+              href="#portafolio"
+              class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400"
+            >
+              Portafolio
+            </a>
+            <a
+              href="#contacto"
+              class="text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-400"
+            >
+              Contacto
+            </a>
+            {/*
+              Clases comunes en los enlaces:
+              - text-slate-600: texto gris medio en modo claro, menos intenso que el texto principal.
+              - hover:text-brand-600: al pasar el cursor, cambia a un color de marca más intenso (tono 600).
+              - dark:text-slate-300: en modo oscuro, texto gris claro para buena legibilidad.
+              - dark:hover:text-brand-400: en modo oscuro + hover, usa un tono de marca más claro (400) adaptado al fondo oscuro.
+            */}
+          </nav>
+
+          {/* Botón toggle tema */}
+          <button
+            id="theme-toggle"
+            type="button"
+            class="ml-4 inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
+            aria-label="Cambiar tema claro/oscuro"
+          >
+            {/*
+              Botón para alternar tema:
+              - ml-4: margen izquierdo de 1rem respecto al bloque anterior.
+              - inline-flex: se comporta como elemento en línea pero con comportamiento flex.
+              - h-9 / w-9: botón cuadrado (~2.25rem).
+              - items-center / justify-center: centra el contenido (icono) dentro del botón.
+              - rounded-full: bordes totalmente redondeados (forma circular).
+              - border: borde de 1px alrededor.
+              - border-slate-200: borde gris claro en modo claro.
+              - bg-white: fondo blanco en modo claro.
+              - text-slate-700: icono gris oscuro (texto) en modo claro.
+              - shadow-sm: pequeña sombra para dar sensación de elevación.
+              - transition: animación suave para cambios de color/fondo/etc.
+              - hover:bg-slate-100: en hover (modo claro), fondo gris claro para feedback visual.
+              - dark:border-slate-700: en modo oscuro, borde gris oscuro.
+              - dark:bg-slate-800: en modo oscuro, fondo gris oscuro.
+              - dark:text-slate-100: en modo oscuro, icono claro.
+              - dark:hover:bg-slate-700: en modo oscuro + hover, fondo ligeramente más claro que el fondo base.
+            */}
+            <span class="block dark:hidden">☾</span>
+            <span class="hidden dark:block">☼</span>
+            {/*
+              Iconos de tema:
+              - Primer span (☾):
+                - block: se muestra como elemento de bloque.
+                - dark:hidden: se oculta cuando la clase .dark está activa.
+                → visible solo en modo claro.
+              - Segundo span (☼):
+                - hidden: por defecto no se muestra.
+                - dark:block: se muestra como bloque en modo oscuro.
+                → visible solo en modo oscuro.
+            */}
+          </button>
+        </div>
+      </header>
+
+      {/* Contenido */}
+      <main class="flex-1">
+        {/*
+          flex-1:
+          - Indica que el <main> debe ocupar todo el espacio vertical restante
+            entre el header y el footer dentro del contenedor flex-col.
+          - Esto permite que el footer se mantenga al final de la pantalla incluso
+            si el contenido es corto.
+        */}
+        <slot />
+      </main>
+
+      {/* Footer */}
+      <footer
+        class="border-t border-slate-200 bg-white/80 py-4 text-center text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-900/80 dark:text-slate-400"
+      >
+        {/*
+          Footer:
+          - border-t: borde superior de 1px.
+          - border-slate-200: borde gris claro en modo claro.
+          - bg-white/80: fondo blanco semitransparente (0.8) en modo claro.
+          - py-4: padding vertical de 1rem.
+          - text-center: texto centrado horizontalmente.
+          - text-xs: texto pequeño, adecuado para información secundaria.
+          - text-slate-500: gris suave en modo claro.
+          - dark:border-slate-800: en modo oscuro, borde gris muy oscuro.
+          - dark:bg-slate-900/80: en modo oscuro, fondo gris muy oscuro con opacidad 0.8.
+          - dark:text-slate-400: en modo oscuro, texto gris medio-claro para legibilidad sin demasiado contraste.
+        */}
+        <p>
+          © {new Date().getFullYear()} Jairo Martínez Vanegas
+          <span class="ml-1">Portafolio personal construido con Astro</span>
+          {/*
+            span:
+            - ml-1: margen izquierdo de 0.25rem para separar el texto "Construido con Astro..."
+              del símbolo © y el nombre.
+          */}
+        </p>
+      </footer>
+    </div>
+
+    {/* Script para aplicar el tema persistente ANTES de pintar */}
+    <script is:inline>
+      {/*
+        Script inline:
+        - is:inline indica a Astro que incruste el script tal cual en el HTML final.
+        - Se usa para controlar la clase "dark" en <html> según:
+          - preferencia guardada en localStorage
+          - preferencia del sistema (prefers-color-scheme)
+      */}
+      (function () {
+        const root = document.documentElement;
+        const key = "theme";
+        const stored = localStorage.getItem(key);
+        const prefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+
+        // Estado inicial del tema:
+        // 1) Si el usuario guardó explícitamente "dark" en localStorage, se usa ese.
+        // 2) Si no hay valor guardado y el sistema prefiere oscuro, también se activa "dark".
+        // 3) En cualquier otro caso, se asegura que la clase "dark" no esté presente.
+        if (stored === "dark" || (!stored && prefersDark)) {
+          root.classList.add("dark");
+        } else {
+          root.classList.remove("dark");
+        }
+
+        // Una vez cargado el DOM, conectamos el botón para alternar el tema.
+        window.addEventListener("DOMContentLoaded", () => {
+          const btn = document.querySelector("#theme-toggle");
+          if (!btn) return;
+
+          btn.addEventListener("click", () => {
+            // Alterna la clase "dark" en <html>.
+            const isDark = root.classList.toggle("dark");
+            // Persiste la elección en localStorage para futuras visitas.
+            localStorage.setItem(key, isDark ? "dark" : "light");
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

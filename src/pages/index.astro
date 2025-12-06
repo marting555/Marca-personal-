@@ -1,0 +1,314 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const title = "Jairo Martínez Vanegas";
+const description =
+  "Portafolio personal de Jairo Martínez Vanegas: liderazgo militar, ingeniería informática y desarrollo de software.";
+
+const highlights = [
+  { title: "Ubicación", value: "Santiago de Chile" },
+  {
+    title: "Trayectoria",
+    value: "Teniente (R) del Ejército Nacional de Colombia",
+  },
+  {
+    title: "Actualidad",
+    value: "Estudiante de Ingeniería Informática (5.º año) · UTEM",
+  },
+];
+
+const contactLinks = [
+  {
+    label: "Correo",
+    value: "martinevj@hotmail.com",
+    href: "mailto:martinevj@hotmail.com",
+  },
+  {
+    label: "Teléfono principal",
+    value: "+56 9 9196 2003",
+    href: "tel:+56991962003",
+  },
+  {
+    label: "Teléfono alterno",
+    value: "+56 9 3609 792",
+    href: "tel:+5693609792",
+  },
+  {
+    label: "GitHub Construtem",
+    value: "github.com/Construtem",
+    href: "https://github.com/Construtem",
+  },
+  {
+    label: "GitHub Proyecto SDS",
+    value: "github.com/Proyecto-SDS",
+    href: "https://github.com/Proyecto-SDS",
+  },
+];
+
+const skills = {
+  technical: [
+    "React y JavaScript para interfaces modernas",
+    "Node.js y Python para APIs y automatización",
+    "Go (nivel inicial) para servicios de alto rendimiento",
+    "Arquitecturas de microservicios y diseño de APIs REST",
+    "Docker y contenedores para entornos reproducibles",
+    "Fundamentos sólidos en redes, sistemas operativos y bases de datos",
+  ],
+  soft: [
+    "Liderazgo y toma de decisiones bajo presión",
+    "Disciplina, responsabilidad y orientación al detalle",
+    "Trabajo en equipo con foco en coordinación y confianza",
+    "Adaptación a entornos exigentes y cambiantes",
+    "Comunicación efectiva en contextos técnicos y estratégicos",
+    "Resolución de problemas con ética profesional",
+  ],
+};
+
+const projects = [
+  {
+    name: "Sistema de Gestión para Ferretería — Construtem",
+    type: "Proyecto profesional",
+    role: "Desarrollador Frontend",
+    description:
+      "Aplicación web para administrar inventario, ventas y operaciones de una ferretería sobre arquitectura de microservicios. Diseñé componentes reutilizables en React y definí flujos de usuario colaborando con el equipo backend (Node.js y Go).",
+    tech: ["React", "Node.js", "Go", "Microservicios", "Docker"],
+    repo: "https://github.com/Construtem",
+  },
+  {
+    name: "Sistema de Reservas de Restaurante — Proyecto SDS",
+    type: "Proyecto académico/profesional",
+    role: "Desarrollador Frontend",
+    description:
+      "Plataforma para gestionar reservas, mesas y disponibilidades en restaurantes. Construí vistas responsivas en React, manejé estado y validaciones, y coordiné la integración con APIs REST en Python y Node.js.",
+    tech: ["React", "Node.js", "Python", "Tailwind"],
+    repo: "https://github.com/Proyecto-SDS",
+  },
+  {
+    name: "Tablero táctico de operaciones (concepto UTEM)",
+    type: "Proyecto conceptual",
+    role: "Product owner y diseñador funcional",
+    description:
+      "Propuesta de plataforma para sintetizar datos operacionales y logísticos en tiempo real. El objetivo es combinar protocolos de mando con visualizaciones accesibles para equipos multidisciplinarios.",
+    tech: ["Figma", "React", "PostgreSQL", "Docker"],
+    repo: undefined,
+  },
+];
+---
+
+<Layout title={title} description={description}>
+  <section
+    id="inicio"
+    class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 px-4 py-20 text-slate-50 sm:px-6 lg:px-8"
+  >
+    <div class="mx-auto flex max-w-6xl flex-col gap-12 lg:flex-row lg:items-center">
+      <div class="flex-1 space-y-6">
+        <span class="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-emerald-300">
+          Marca personal · Tecnología y liderazgo
+        </span>
+        <h1 class="text-4xl font-semibold tracking-tight sm:text-5xl">
+          Liderazgo militar al servicio de la ingeniería informática.
+        </h1>
+        <p class="max-w-2xl text-base text-slate-200">
+          Soy Teniente retirado del Ejército Nacional de Colombia y estudiante de Ingeniería Informática en la UTEM. Combino disciplina, gestión de recursos y toma de decisiones con el desarrollo de software utilizando React, Node.js, Python, Go y arquitecturas de microservicios. Mi meta es aportar a equipos que valoren soluciones confiables, seguras y escalables.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="/portafolio-jairo-martinez.pdf"
+            download
+            class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-emerald-500/30 transition hover:bg-emerald-400"
+          >
+            Descargar portafolio (PDF)
+          </a>
+          <a
+            href="#contacto"
+            class="inline-flex items-center justify-center rounded-full border border-emerald-300/60 px-5 py-2 text-sm font-semibold text-emerald-200 transition hover:border-emerald-200 hover:text-emerald-100"
+          >
+            Contactar
+          </a>
+        </div>
+        <ul class="grid gap-4 sm:grid-cols-2">
+          {contactLinks.slice(0, 3).map((item) => (
+            <li class="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
+              <span class="text-xs uppercase tracking-[0.15em] text-slate-300">{item.label}</span>
+              <a
+                href={item.href}
+                class="mt-1 block text-sm font-semibold text-slate-50 hover:text-emerald-300"
+              >
+                {item.value}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="flex-1">
+        <div class="relative mx-auto w-full max-w-sm overflow-hidden rounded-[3rem] border border-white/20 bg-white/10 p-8 shadow-2xl backdrop-blur">
+          <div class="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-emerald-500/30 blur-3xl"></div>
+          <div class="absolute -bottom-8 -left-8 h-36 w-36 rounded-full bg-cyan-400/20 blur-3xl"></div>
+          <img
+            src="/jairo-martinez.png"
+            alt="Fotografía de Jairo Martínez Vanegas"
+            class="relative z-10 mx-auto aspect-square w-40 rounded-3xl border border-white/10 object-cover"
+            loading="lazy"
+          />
+          <div class="relative z-10 mt-6 space-y-3 text-sm">
+            {highlights.map((fact) => (
+              <div class="flex flex-col rounded-xl border border-white/10 bg-slate-950/40 px-4 py-3">
+                <span class="text-xs uppercase tracking-[0.2em] text-slate-400">
+                  {fact.title}
+                </span>
+                <span class="text-sm font-semibold text-slate-100">
+                  {fact.value}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre-mi" class="bg-slate-50 px-4 py-20 text-slate-900 dark:bg-slate-950 dark:text-slate-100 sm:px-6 lg:px-8">
+    <div class="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[1fr,0.8fr]">
+      <div class="space-y-6">
+        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">
+          Sobre mí
+        </h2>
+        <p class="text-base text-slate-600 dark:text-slate-300">
+          Mi experiencia militar me formó en liderazgo, pensamiento estratégico y atención al detalle. En la UTEM, he reforzado esa base con conocimientos en programación, seguridad informática, redes y desarrollo de productos digitales. Me entusiasma trabajar en equipos donde pueda articular disciplina operativa con la creación de software centrado en las personas.
+        </p>
+        <p class="text-base text-slate-600 dark:text-slate-300">
+          Disfruto transformar requerimientos en soluciones concretas, documentar procesos, orientar a otros y mantener una visión amplia del impacto que tiene la tecnología en organizaciones y comunidades.
+        </p>
+      </div>
+      <div class="space-y-6">
+        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-md dark:border-slate-800 dark:bg-slate-900">
+          <h3 class="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-300">
+            Trayectoria clave
+          </h3>
+          <ul class="mt-4 space-y-4 text-sm text-slate-600 dark:text-slate-300">
+            <li>
+              <span class="font-semibold text-slate-900 dark:text-slate-50">Ejército Nacional de Colombia</span>
+              <br />Teniente (R) · Formación en liderazgo, mando y administración de recursos.
+            </li>
+            <li>
+              <span class="font-semibold text-slate-900 dark:text-slate-50">Universidad Tecnológica Metropolitana</span>
+              <br />Ingeniería Informática (5.º año) · Especial interés en desarrollo de software, seguridad y arquitectura de sistemas.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="habilidades" class="bg-white px-4 py-20 dark:bg-slate-900 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-5xl">
+      <div class="mb-12 space-y-4 text-center">
+        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">
+          Habilidades
+        </h2>
+        <p class="mx-auto max-w-2xl text-base text-slate-600 dark:text-slate-300">
+          Una combinación equilibrada entre competencias técnicas y habilidades blandas que permiten ejecutar, coordinar y entregar resultados confiables.
+        </p>
+      </div>
+      <div class="grid gap-8 md:grid-cols-2">
+        <article class="rounded-3xl border border-slate-200 bg-slate-50 p-8 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+          <h3 class="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-300">
+            Habilidades técnicas
+          </h3>
+          <ul class="mt-4 space-y-3 text-sm text-slate-700 dark:text-slate-300">
+            {skills.technical.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+        <article class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-950">
+          <h3 class="text-sm font-semibold uppercase tracking-[0.2em] text-emerald-600 dark:text-emerald-300">
+            Habilidades blandas
+          </h3>
+          <ul class="mt-4 space-y-3 text-sm text-slate-700 dark:text-slate-300">
+            {skills.soft.map((item) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-1 h-2.5 w-2.5 rounded-full bg-slate-400"></span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="portafolio" class="bg-slate-50 px-4 py-20 dark:bg-slate-950 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-5xl">
+      <div class="mb-12 space-y-4 text-center">
+        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">
+          Portafolio de proyectos
+        </h2>
+        <p class="mx-auto max-w-2xl text-base text-slate-600 dark:text-slate-300">
+          Cada proyecto refleja cómo integro estrategia, trabajo en equipo y tecnología para resolver problemas específicos.
+        </p>
+      </div>
+      <div class="grid gap-8 md:grid-cols-2">
+        {projects.map((project) => (
+          <article class="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-8 shadow-md transition hover:-translate-y-1 hover:shadow-lg dark:border-slate-800 dark:bg-slate-900">
+            <div class="flex items-center justify-between gap-4">
+              <h3 class="text-lg font-semibold text-slate-900 dark:text-slate-50">{project.name}</h3>
+              <span class="rounded-full bg-emerald-500/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.15em] text-emerald-600 dark:text-emerald-300">
+                {project.type}
+              </span>
+            </div>
+            <p class="mt-4 text-sm text-slate-600 dark:text-slate-300">
+              <span class="font-semibold text-slate-900 dark:text-slate-50">Rol:</span> {project.role}
+            </p>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">{project.description}</p>
+            <ul class="mt-4 flex flex-wrap gap-2 text-xs text-slate-500 dark:text-slate-400">
+              {project.tech.map((tech) => (
+                <li class="rounded-full border border-slate-200 px-3 py-1 dark:border-slate-700">{tech}</li>
+              ))}
+            </ul>
+            {project.repo && (
+              <a
+                href={project.repo}
+                target="_blank"
+                rel="noreferrer"
+                class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 hover:text-emerald-500 dark:text-emerald-300 dark:hover:text-emerald-200"
+              >
+                Ver repositorio
+                <span aria-hidden="true">→</span>
+              </a>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="bg-white px-4 py-20 dark:bg-slate-900 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-4xl">
+      <div class="rounded-3xl border border-slate-200 bg-slate-50 p-10 shadow-lg dark:border-slate-800 dark:bg-slate-950">
+        <h2 class="text-3xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">
+          Construyamos algo confiable
+        </h2>
+        <p class="mt-4 max-w-2xl text-base text-slate-600 dark:text-slate-300">
+          Estoy disponible para colaborar en iniciativas donde se valoren la coordinación, la seguridad y la entrega de software robusto. Escríbeme o agenda una llamada y conversemos sobre cómo puedo aportar a tu equipo.
+        </p>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2">
+          {contactLinks.map((item) => (
+            <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-emerald-200 dark:border-slate-800 dark:bg-slate-900">
+              <span class="text-xs uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">{item.label}</span>
+              <a
+                href={item.href}
+                class="mt-2 block text-sm font-semibold text-slate-900 hover:text-emerald-600 dark:text-slate-200 dark:hover:text-emerald-300"
+              >
+                {item.value}
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,32 @@
+/* Activa Tailwind como procesador en este archivo de estilos */
+@import "tailwindcss";
+
+/* Habilita el modo oscuro */
+@custom-variant dark (&:where(.dark, .dark *));
+
+
+/* Inserta los estilos base (reset y normalización de estilos) de Tailwind */
+@tailwind base;
+
+/* Inserta los estilos de componentes definidos por Tailwind s */
+@tailwind components;
+
+/* Inserta todas las clases utilitarias de Tailwind (p-4, bg-*, text-*, flex, etc.) */
+@tailwind utilities;
+
+/* 
+ * Estilo global del elemento <body> usando utilidades de Tailwind con @apply.
+ * Define colores para modo claro y modo oscuro.
+ */
+body {
+    /* 
+     * bg-slate-50: fondo gris muy claro para el body en modo claro.
+     * text-slate-900: color de texto muy oscuro para buen contraste en modo claro.
+     * dark:bg-slate-950: fondo casi negro cuando el sitio está en modo oscuro.
+     * dark:text-slate-100: texto casi blanco en modo oscuro para alto contraste.
+     * 
+     * Todas estas utilidades se expanden a propiedades CSS normales
+     * (background-color, color) durante la fase de build.
+     */
+    @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+}
