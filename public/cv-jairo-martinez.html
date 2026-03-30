@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV Jairo Martinez Vanegas</title>
+    <style>
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #e5e7eb;
+        color: #0f172a;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+
+      body {
+        padding: 16px 0;
+      }
+
+      .page {
+        width: 210mm;
+        height: 297mm;
+        margin: 0 auto;
+        background: #ffffff;
+        display: grid;
+        grid-template-columns: 70mm 1fr;
+        overflow: hidden;
+      }
+
+      .sidebar {
+        background: linear-gradient(180deg, #0f172a 0%, #111827 100%);
+        color: #f8fafc;
+        padding: 14mm 10mm 11mm;
+      }
+
+      .main {
+        padding: 16mm 14mm 14mm;
+      }
+
+      .photo {
+        width: 35mm;
+        height: 35mm;
+        margin: 0 auto 7mm;
+        border-radius: 16px;
+        border: 2px solid rgba(255, 255, 255, 0.16);
+        object-fit: cover;
+        display: block;
+      }
+
+      .name {
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.1;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .role {
+        margin: 4px 0 0;
+        color: #86efac;
+        font-size: 10px;
+        line-height: 1.35;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .sidebar-section,
+      .main-section {
+        margin-top: 7mm;
+      }
+
+      .sidebar-title,
+      .main-title {
+        margin: 0 0 3mm;
+        font-size: 10px;
+        line-height: 1.2;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+      }
+
+      .sidebar-title {
+        color: #86efac;
+      }
+
+      .main-title {
+        color: #0f766e;
+      }
+
+      .contact-list,
+      .skill-list,
+      .meta-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .contact-item,
+      .skill-item,
+      .meta-item {
+        margin-bottom: 7px;
+      }
+
+      .contact-label,
+      .meta-label {
+        display: block;
+        margin-bottom: 1px;
+        color: #cbd5e1;
+        font-size: 8px;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+      }
+
+      .contact-value,
+      .meta-value {
+        color: #f8fafc;
+        font-size: 10px;
+        line-height: 1.35;
+        text-decoration: none;
+      }
+
+      .contact-value.github {
+        word-break: break-word;
+      }
+
+      .skill-item {
+        color: #e2e8f0;
+        font-size: 9px;
+        line-height: 1.35;
+        padding-left: 9px;
+        position: relative;
+      }
+
+      .skill-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 5px;
+        width: 4px;
+        height: 4px;
+        border-radius: 999px;
+        background: #86efac;
+      }
+
+      .summary {
+        margin: 0;
+        color: #334155;
+        font-size: 11px;
+        line-height: 1.65;
+      }
+
+      .card {
+        border: 1px solid #dbe4ea;
+        border-radius: 14px;
+        padding: 10px 12px;
+        margin-bottom: 10px;
+        background: #fbfdff;
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: baseline;
+      }
+
+      .card-title {
+        margin: 0;
+        font-size: 12px;
+        line-height: 1.3;
+        font-weight: 800;
+        color: #0f172a;
+      }
+
+      .card-badge {
+        color: #0f766e;
+        font-size: 9px;
+        line-height: 1.2;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        white-space: nowrap;
+      }
+
+      .card-subtitle {
+        margin: 2px 0 0;
+        color: #0f766e;
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .card-text {
+        margin: 6px 0 0;
+        color: #475569;
+        font-size: 10px;
+        line-height: 1.55;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 7px;
+      }
+
+      .tag {
+        border-radius: 999px;
+        background: #dcfce7;
+        color: #166534;
+        padding: 3px 8px;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .small-card {
+        border: 1px solid #dbe4ea;
+        border-radius: 14px;
+        padding: 10px 12px;
+        background: #fbfdff;
+      }
+
+      .small-title {
+        margin: 0;
+        color: #0f172a;
+        font-size: 11px;
+        font-weight: 800;
+      }
+
+      .small-subtitle {
+        margin: 3px 0 0;
+        color: #0f766e;
+        font-size: 10px;
+        font-weight: 700;
+      }
+
+      .small-text {
+        margin: 6px 0 0;
+        color: #475569;
+        font-size: 10px;
+        line-height: 1.5;
+      }
+
+      .footer-note {
+        margin-top: 6mm;
+        color: #64748b;
+        font-size: 9px;
+        line-height: 1.45;
+      }
+
+      @media print {
+        body {
+          background: #ffffff;
+          padding: 0;
+        }
+
+        .page {
+          margin: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <aside class="sidebar">
+        <img
+          class="photo"
+          src="./jairo-martinez.png"
+          alt="Fotografía de Jairo Martínez Vanegas"
+        />
+
+        <h1 class="name">Jairo Martínez Vanegas</h1>
+        <p class="role">Ingeniería Informática · Frontend · Liderazgo</p>
+
+        <section class="sidebar-section">
+          <h2 class="sidebar-title">Contacto</h2>
+          <ul class="contact-list">
+            <li class="contact-item">
+              <span class="contact-label">Correo</span>
+              <span class="contact-value">martinevj@hotmail.com</span>
+            </li>
+            <li class="contact-item">
+              <span class="contact-label">Teléfono principal</span>
+              <span class="contact-value">+56 9 9864 13558</span>
+            </li>
+            <li class="contact-item">
+              <span class="contact-label">Teléfono alterno</span>
+              <span class="contact-value">+56 9 3609 792</span>
+            </li>
+            <li class="contact-item">
+              <span class="contact-label">Ubicación</span>
+              <span class="contact-value">Santiago de Chile</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sidebar-section">
+          <h2 class="sidebar-title">Perfiles</h2>
+          <ul class="contact-list">
+            <li class="contact-item">
+              <span class="contact-label">GitHub</span>
+              <span class="contact-value github">github.com/Construtem</span>
+            </li>
+            <li class="contact-item">
+              <span class="contact-label">GitHub</span>
+              <span class="contact-value github">github.com/Proyecto-SDS</span>
+            </li>
+          </ul>
+        </section>
+
+        <section class="sidebar-section">
+          <h2 class="sidebar-title">Habilidades técnicas</h2>
+          <ul class="skill-list">
+            <li class="skill-item">React y JavaScript para interfaces modernas</li>
+            <li class="skill-item">Node.js y Python para APIs y automatización</li>
+            <li class="skill-item">Go para servicios de alto rendimiento</li>
+            <li class="skill-item">Arquitectura de microservicios y APIs REST</li>
+            <li class="skill-item">Docker y entornos reproducibles</li>
+          </ul>
+        </section>
+
+        <section class="sidebar-section">
+          <h2 class="sidebar-title">Fortalezas</h2>
+          <ul class="skill-list">
+            <li class="skill-item">Liderazgo bajo presión</li>
+            <li class="skill-item">Disciplina y orientación al detalle</li>
+            <li class="skill-item">Coordinación de equipos</li>
+            <li class="skill-item">Comunicación técnica y estratégica</li>
+          </ul>
+        </section>
+      </aside>
+
+      <section class="main">
+        <section class="main-section" style="margin-top: 0">
+          <h2 class="main-title">Perfil profesional</h2>
+          <p class="summary">
+            Teniente retirado del Ejército Nacional de Colombia y estudiante de
+            Ingeniería Informática en la UTEM. Combino disciplina operativa,
+            gestión de recursos y toma de decisiones con desarrollo de software
+            enfocado en soluciones confiables. Me he desempeñado principalmente
+            en frontend con React, integrando equipos backend en Node.js, Go y
+            Python.
+          </p>
+        </section>
+
+        <section class="main-section">
+          <h2 class="main-title">Experiencia y trayectoria</h2>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Ejército Nacional de Colombia</h3>
+              <span class="card-badge">Teniente (R)</span>
+            </div>
+            <p class="card-text">
+              Formación en liderazgo, mando y administración de recursos. Base
+              sólida en coordinación de equipos, respuesta bajo presión,
+              planificación y ejecución disciplinada.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">Universidad Tecnológica Metropolitana</h3>
+              <span class="card-badge">Actual</span>
+            </div>
+            <p class="card-subtitle">Ingeniería Informática · 5.º año</p>
+            <p class="card-text">
+              Enfoque en desarrollo de software, seguridad informática, redes,
+              arquitectura de sistemas y construcción de productos digitales.
+            </p>
+          </article>
+        </section>
+
+        <section class="main-section">
+          <h2 class="main-title">Proyectos destacados</h2>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                Sistema de Gestión para Ferretería - Construtem
+              </h3>
+              <span class="card-badge">Frontend</span>
+            </div>
+            <p class="card-text">
+              Aplicación web para administrar inventario, ventas y operaciones
+              sobre arquitectura de microservicios. Desarrollo de componentes
+              reutilizables en React y definición de flujos de usuario junto al
+              equipo backend.
+            </p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Go</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Microservicios</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                Sistema de Reservas de Restaurante - Proyecto SDS
+              </h3>
+              <span class="card-badge">Frontend</span>
+            </div>
+            <p class="card-text">
+              Plataforma para gestión de reservas, mesas y disponibilidades.
+              Implementación de vistas responsivas, manejo de estado y
+              coordinación de integración con APIs REST.
+            </p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">Python</span>
+              <span class="tag">Tailwind</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                Tablero táctico de operaciones (concepto UTEM)
+              </h3>
+              <span class="card-badge">Producto</span>
+            </div>
+            <p class="card-text">
+              Propuesta funcional para sintetizar información operacional y
+              logística en tiempo real mediante visualizaciones accesibles para
+              equipos multidisciplinarios.
+            </p>
+            <div class="tags">
+              <span class="tag">Figma</span>
+              <span class="tag">React</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Docker</span>
+            </div>
+          </article>
+        </section>
+
+        <section class="main-section">
+          <h2 class="main-title">Información complementaria</h2>
+          <div class="two-col">
+            <article class="small-card">
+              <h3 class="small-title">Objetivo</h3>
+              <p class="small-text">
+                Aportar a equipos que valoren seguridad, coordinación y
+                ejecución confiable de software.
+              </p>
+            </article>
+            <article class="small-card">
+              <h3 class="small-title">Disponibilidad</h3>
+              <p class="small-text">
+                Abierto a colaborar en proyectos de desarrollo web, frontend y
+                productos digitales.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <p class="footer-note">
+          CV generado a partir del portafolio actual para mantener consistencia
+          entre la web publicada y el archivo descargable.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
